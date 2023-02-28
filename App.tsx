@@ -13,7 +13,7 @@ import AscensionScreen from './src/Screens/Game/AscensionScreen'
 import MainGameScreen from './src/Screens/Game/MainGameScreen'
 import UpgradesScreen from './src/Screens/Game/UpgradesScreen'
 
-import { DarkModeContext } from './src/Context/DarkModeContext'
+import { DarkModeContext } from './src/Contexts/DarkModeContext'
 
 const Stack = createNativeStackNavigator()
 

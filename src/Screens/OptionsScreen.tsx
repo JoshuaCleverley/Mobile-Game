@@ -4,7 +4,7 @@ import { colors } from '../Style/Colors'
 import { styles } from '../Style/Styles'
 import { ScreenProps } from '../Types/ScreenProps'
 
-import { DarkModeContext } from '../Context/DarkModeContext'
+import { DarkModeContext } from '../Contexts/DarkModeContext'
 
 export default function OptionsScreen({ navigation, route }: ScreenProps) {
   const { isDarkMode, setIsDarkMode } = useContext(DarkModeContext)

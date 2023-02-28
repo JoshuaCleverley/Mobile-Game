@@ -5,7 +5,7 @@ import { ScreenProps } from '../Types/ScreenProps'
 import { colors } from '../Style/Colors'
 import { styles } from '../Style/Styles'
 
-import { DarkModeContext } from '../Context/DarkModeContext'
+import { DarkModeContext } from '../Contexts/DarkModeContext'
 import { useContext } from 'react'
 
 export default function HomeScreen({ navigation, route }: ScreenProps) {

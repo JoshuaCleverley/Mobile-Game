@@ -3,7 +3,7 @@ import { colors } from '../../Style/Colors'
 import { styles } from '../../Style/Styles'
 import { ScreenProps } from '../../Types/ScreenProps'
 import { useContext } from 'react'
-import { DarkModeContext } from '../../Context/DarkModeContext'
+import { DarkModeContext } from '../../Contexts/DarkModeContext'
 
 export default function MainGameScreen({ navigation, route }: ScreenProps) {
   const { isDarkMode } = useContext(DarkModeContext)
