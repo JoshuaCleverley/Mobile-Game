@@ -9,8 +9,11 @@ import { ScreenProps } from "../Types/ScreenProps";
 import { colors } from '../Style/Colors';
 import { styles } from '../Style/Styles';
 
+import { DarkModeContext } from '../Context/DarkModeContext';
+import { useContext } from 'react';
+
 export default function HomeScreen({ navigation, route }: ScreenProps) {
-    let isDarkMode = true;
+    const { isDarkMode } = useContext(DarkModeContext);
 
     return (
         <View 

@@ -1,31 +1,31 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Switch, Text, View } from "react-native";
 import { colors } from "../Style/Colors";
 import { styles } from "../Style/Styles";
 import { ScreenProps } from "../Types/ScreenProps";
 
-export default function OptionsScreen({ navigation, route }: ScreenProps) {
-    const isDarkMode = true;
+import { DarkModeContext } from "../Context/DarkModeContext";
 
-    const [isEnabled, setIsEnabled] = useState(false);
-    const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+export default function OptionsScreen({ navigation, route }: ScreenProps) {
+    const { isDarkMode, setIsDarkMode } = useContext(DarkModeContext);
+    const toggleSwitch = () => setIsDarkMode(!isDarkMode);
     
     return (
         <View 
             style={[
             styles.container,
             {
-                backgroundColor: isEnabled ? colors.background.dark: colors.background.light,
+                backgroundColor: isDarkMode ? colors.background.dark: colors.background.light,
             }
         ]}>
-            <Text style={{ color: isEnabled ? colors.text.dark : colors.text.light }}>
+            <Text style={{ color: isDarkMode ? colors.text.dark : colors.text.light }}>
                 Light/Dark mode
             </Text>
             <Switch
                 trackColor={{true: colors.active.dark, false: colors.active.light}}
-                thumbColor={isEnabled ? colors.active.dark : colors.active.light}
+                thumbColor={isDarkMode ? colors.active.dark : colors.active.light}
                 onValueChange={toggleSwitch}
-                value={isEnabled}
+                value={isDarkMode}
             />
         </View>
     );

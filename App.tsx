@@ -15,49 +15,53 @@ import AscensionScreen from './src/Screens/Game/AscensionScreen';
 import MainGameScreen from './src/Screens/Game/MainGameScreen';
 import UpgradesScreen from './src/Screens/Game/UpgradesScreen';
 
+import { DarkModeContext } from './src/Context/DarkModeContext';
+
 const Stack = createNativeStackNavigator();
 
 function App(): JSX.Element {
     // TODO: Setup dark mode to be saveable and global, and allow it to be changed in the settings page
-    const [isDarkMode, setDarkMode] = useState(true);
+    const [isDarkMode, setIsDarkMode] = useState(true);
 
     return (
-        <NavigationContainer>
-            
-                {/* Style statusbar with the background colour */}
-                <StatusBar
-                    barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-                    backgroundColor={isDarkMode ? colors.background.dark : colors.background.light}
-                />
+        <DarkModeContext.Provider value={{isDarkMode, setIsDarkMode}}>
+            <NavigationContainer>
+                
+                    {/* Style statusbar with the background colour */}
+                    <StatusBar
+                        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+                        backgroundColor={isDarkMode ? colors.background.dark : colors.background.light}
+                    />
 
-                {/* Screens of app */}
-                <Stack.Navigator initialRouteName="Home" >
-                    <Stack.Screen  
-                        name="Home"
-                        component={HomeScreen}
-                    />
-                    <Stack.Screen  
-                        name="Instructions"
-                        component={InstructionsScreen}
-                    />
-                    <Stack.Screen  
-                        name="Options"
-                        component={OptionsScreen}
-                    />
-                    <Stack.Screen  
-                        name="Game"
-                        component={MainGameScreen}
-                    />
-                    <Stack.Screen  
-                        name="Upgrades"
-                        component={UpgradesScreen}
-                    />
-                    <Stack.Screen  
-                        name="Ascension"
-                        component={AscensionScreen}
-                    />
-                </Stack.Navigator>
-        </NavigationContainer>
+                    {/* Screens of app */}
+                    <Stack.Navigator initialRouteName="Home" >
+                        <Stack.Screen  
+                            name="Home"
+                            component={HomeScreen}
+                        />
+                        <Stack.Screen  
+                            name="Instructions"
+                            component={InstructionsScreen}
+                        />
+                        <Stack.Screen  
+                            name="Options"
+                            component={OptionsScreen}
+                        />
+                        <Stack.Screen  
+                            name="Game"
+                            component={MainGameScreen}
+                        />
+                        <Stack.Screen  
+                            name="Upgrades"
+                            component={UpgradesScreen}
+                        />
+                        <Stack.Screen  
+                            name="Ascension"
+                            component={AscensionScreen}
+                        />
+                    </Stack.Navigator>
+            </NavigationContainer>
+        </DarkModeContext.Provider>
     );
 }
 

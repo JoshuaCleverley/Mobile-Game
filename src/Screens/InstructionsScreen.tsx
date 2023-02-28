@@ -2,9 +2,11 @@ import { SafeAreaView, ScrollView, Text, View } from "react-native";
 import { colors } from "../Style/Colors";
 import { styles } from "../Style/Styles";
 import { ScreenProps } from "../Types/ScreenProps";
+import { useContext } from "react";
+import { DarkModeContext } from "../Context/DarkModeContext";
 
 export default function InstructionsScreen({ navigation, route }: ScreenProps) {
-    const isDarkMode = true;
+    const { isDarkMode } = useContext(DarkModeContext);
     
     return (
         <SafeAreaView style={styles.container}>
