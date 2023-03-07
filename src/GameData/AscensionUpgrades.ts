@@ -1,7 +1,7 @@
 export const ascensionUpgrades = [
   {
-    name: 'Generator One',
+    name: 'Ascension Generator One',
     price: 100, // TODO: Figure out ascension upgrades
-    count: 0,
+    bought: false,
   },
 ]
