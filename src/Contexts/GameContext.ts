@@ -3,6 +3,7 @@ import { generators } from '../GameData/Generators'
 import { upgrades } from '../GameData/Upgrades'
 import { ascensionUpgrades } from '../GameData/AscensionUpgrades'
 
+// Context to store game data
 export const GameContext = React.createContext({
   money: 0,
   ascensionCurrency: 0,

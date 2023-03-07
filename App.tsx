@@ -1,11 +1,13 @@
-// Imports
+// Core imports
 import { useState } from 'react'
 import { StatusBar } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
+// Colour
 import { colors } from './src/Style/Colors'
 
+// Screens
 import HomeScreen from './src/Screens/HomeScreen'
 import InstructionsScreen from './src/Screens/InstructionsScreen'
 import OptionsScreen from './src/Screens/OptionsScreen'
@@ -13,19 +15,23 @@ import AscensionScreen from './src/Screens/Game/AscensionScreen'
 import MainGameScreen from './src/Screens/Game/MainGameScreen'
 import UpgradesScreen from './src/Screens/Game/UpgradesScreen'
 
+// Contexts
 import { DarkModeContext } from './src/Contexts/DarkModeContext'
 import { GameContext } from './src/Contexts/GameContext'
+
+// Game data
 import { generators } from './src/GameData/Generators'
 import { upgrades } from './src/GameData/Upgrades'
 import { ascensionUpgrades } from './src/GameData/AscensionUpgrades'
 
+// Createa a stack navigator to allow navigation around application
 const Stack = createNativeStackNavigator()
 
 function App(): JSX.Element {
-  // TODO: Setup dark mode to be saveable and global, and allow it to be changed in the settings page
+  // Dark mode state stored here and passed down to other components
   const [isDarkMode, setIsDarkMode] = useState(true)
 
-  // Game data
+  // Game data state stored here and passed down to other components
   const [money, setMoney] = useState(0)
   const [ascensionCurrency, setAscensionCurrency] = useState(0)
   const [generatorsValue, setGenerators] = useState(generators)
@@ -35,6 +41,7 @@ function App(): JSX.Element {
 
   return (
     <DarkModeContext.Provider value={{ isDarkMode, setIsDarkMode }}>
+      {/* Providers for darkmode and game data */}
       <GameContext.Provider
         value={{
           money,
@@ -56,8 +63,7 @@ function App(): JSX.Element {
               isDarkMode ? colors.background.dark : colors.background.light
             }
           />
-
-          {/* Screens of app */}
+          {/* Create navigator and style header */}
           <Stack.Navigator
             initialRouteName="Home"
             screenOptions={{
@@ -70,6 +76,7 @@ function App(): JSX.Element {
                   : colors.background.light,
               },
             }}>
+            {/* Screens of app */}
             <Stack.Screen name="Home" component={HomeScreen} />
             <Stack.Screen name="Instructions" component={InstructionsScreen} />
             <Stack.Screen name="Options" component={OptionsScreen} />

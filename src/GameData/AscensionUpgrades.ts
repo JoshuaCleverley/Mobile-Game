@@ -1,3 +1,4 @@
+// List of ascension upgrades (better versions of upgrades)
 export const ascensionUpgrades = [
   {
     name: 'Ascension Generator One',

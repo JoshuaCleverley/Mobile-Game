@@ -24,6 +24,7 @@ export default function OptionsScreen({ navigation, route }: ScreenProps) {
         style={{ color: isDarkMode ? colors.text.dark : colors.text.light }}>
         Light/Dark mode
       </Text>
+      {/* Darkmode toggle switch */}
       <Switch
         trackColor={{ true: colors.active.dark, false: colors.active.light }}
         thumbColor={isDarkMode ? colors.active.dark : colors.active.light}

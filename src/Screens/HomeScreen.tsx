@@ -1,12 +1,10 @@
+import { useContext } from 'react'
 import { Button, Text, View } from 'react-native'
 
 import { ScreenProps } from '../Types/ScreenProps'
-
+import { DarkModeContext } from '../Contexts/DarkModeContext'
 import { colors } from '../Style/Colors'
 import { styles } from '../Style/Styles'
-
-import { DarkModeContext } from '../Contexts/DarkModeContext'
-import { useContext } from 'react'
 
 export default function HomeScreen({ navigation, route }: ScreenProps) {
   const { isDarkMode } = useContext(DarkModeContext)

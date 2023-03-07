@@ -20,7 +20,7 @@ export default function InstructionsScreen({ navigation, route }: ScreenProps) {
               : colors.background.light,
           },
         ]}>
-        {/* Text for instructions */}
+        {/* Text for instructions (WIP) */}
         <Text
           style={[
             styles.instructionsBody,

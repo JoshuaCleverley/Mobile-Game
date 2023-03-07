@@ -1,3 +1,4 @@
+// A list of generators (things that generate money)
 export const generators = [
   {
     name: 'Generator One',

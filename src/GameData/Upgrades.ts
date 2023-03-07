@@ -1,3 +1,4 @@
+// List of upgrades (they modify the amount of money made by clicking or from generators)
 export const upgrades = [
   {
     name: 'Upgrade One',
