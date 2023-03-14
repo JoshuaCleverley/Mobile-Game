@@ -1,7 +1,10 @@
 import * as React from 'react'
-import { generators } from '../GameData/Generators'
-import { upgrades } from '../GameData/Upgrades'
-import { ascensionUpgrades } from '../GameData/AscensionUpgrades'
+import { Generator, generators } from '../GameData/Generators'
+import { Upgrade, upgrades } from '../GameData/Upgrades'
+import {
+  AscensionUpgrade,
+  ascensionUpgrades,
+} from '../GameData/AscensionUpgrades'
 
 // Context to store game data
 export const GameContext = React.createContext({
@@ -13,7 +16,7 @@ export const GameContext = React.createContext({
 
   setMoney: (value: number) => {},
   setAscensionCurrency: (value: number) => {},
-  setGenerators: (value: typeof generators) => {},
-  setUpgrades: (value: typeof upgrades) => {},
-  setAscensionUpgrades: (value: typeof ascensionUpgrades) => {},
+  setGenerators: (value: Generator[]) => {},
+  setUpgrades: (value: Upgrade[]) => {},
+  setAscensionUpgrades: (value: AscensionUpgrade[]) => {},
 })

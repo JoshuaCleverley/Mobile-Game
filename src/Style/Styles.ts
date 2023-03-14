@@ -28,4 +28,18 @@ export const styles = StyleSheet.create({
     flex: 1,
     bottom: 100,
   },
+  menu: {
+    display: 'flex',
+    flexDirection: 'row',
+    gap: 50,
+    marginBottom: 15,
+  },
+  moneyDisplay: {
+    marginVertical: 20,
+    alignItems: 'center',
+    display: 'flex',
+  },
+  moneyDisplayText: {
+    fontSize: 30,
+  },
 })

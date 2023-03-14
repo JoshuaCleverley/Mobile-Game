@@ -1,8 +1,9 @@
 // Core imports
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { StatusBar } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 // Colour
 import { colors } from './src/Style/Colors'
@@ -23,8 +24,9 @@ import { GameContext } from './src/Contexts/GameContext'
 import { generators } from './src/GameData/Generators'
 import { upgrades } from './src/GameData/Upgrades'
 import { ascensionUpgrades } from './src/GameData/AscensionUpgrades'
+import { GameDataStored } from './src/Types/GameDataStored'
 
-// Createa a stack navigator to allow navigation around application
+// Create a stack navigator to allow navigation around application
 const Stack = createNativeStackNavigator()
 
 function App(): JSX.Element {
@@ -38,6 +40,59 @@ function App(): JSX.Element {
   const [upgradesValue, setUpgrades] = useState(upgrades)
   const [ascensionUpgradesValue, setAscensionUpgrades] =
     useState(ascensionUpgrades)
+
+  // TODO: Get saving working
+  /*
+  useEffect(() => {
+    // On startup, check if data is saved already and load it if it is
+    AsyncStorage.getItem('gameData')
+      .then(res => {
+        if (res) {
+          const gameData = JSON.parse(res) as GameDataStored
+
+          setMoney(gameData.money)
+          setAscensionCurrency(gameData.ascensionCurrency)
+          setGenerators(gameData.generators)
+          setUpgrades(gameData.upgrades)
+          setAscensionUpgrades(gameData.ascensionUpgrades)
+        }
+
+        console.log('Successfully loaded game data')
+      })
+      .catch(e => {
+        console.error('Error loading game data:\n' + e)
+      })
+  }, [])
+  */
+
+  // Save game every 20 seconds
+  /*
+  useEffect(() => {
+    const interval = setInterval(() => {
+      console.log('Saving game')
+
+      const gameData: GameDataStored = {
+        money: money,
+        ascensionCurrency: ascensionCurrency,
+        generators: generatorsValue,
+        upgrades: upgradesValue,
+        ascensionUpgrades: ascensionUpgradesValue,
+      }
+
+      const gameDataStringified = JSON.stringify(gameData)
+
+      AsyncStorage.setItem('gameData', gameDataStringified)
+        .then(res => {
+          console.log('Successfully stored game data')
+        })
+        .catch(e => {
+          console.error('Error storing game data')
+        })
+    }, 20000)
+
+    return () => clearInterval(interval)
+  }, [])
+  */
 
   return (
     <DarkModeContext.Provider value={{ isDarkMode, setIsDarkMode }}>
