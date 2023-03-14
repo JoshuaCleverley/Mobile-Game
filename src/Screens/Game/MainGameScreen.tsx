@@ -5,6 +5,7 @@ import { ScreenProps } from '../../Types/ScreenProps'
 import { useContext } from 'react'
 import { DarkModeContext } from '../../Contexts/DarkModeContext'
 import { GameContext } from '../../Contexts/GameContext'
+import { MoneyDisplay } from '../../Components/MoneyDisplay'
 
 export default function MainGameScreen({ navigation, route }: ScreenProps) {
   const { isDarkMode } = useContext(DarkModeContext)
@@ -29,38 +30,11 @@ export default function MainGameScreen({ navigation, route }: ScreenProps) {
             : colors.background.light,
         },
       ]}>
-      <View style={[styles.moneyDisplay]}>
-        <View style={[styles.menu]}>
-          <Button
-            title="Upgrades"
-            color={isDarkMode ? colors.active.dark : colors.active.light}
-            onPress={_ => navigation.push('Upgrades')}
-          />
-          <Button
-            title="Ascension"
-            color={isDarkMode ? colors.active.dark : colors.active.light}
-            onPress={_ => navigation.push('Ascension')}
-          />
-        </View>
-        <Text
-          style={[
-            styles.moneyDisplayText,
-            {
-              color: isDarkMode ? colors.text.dark : colors.text.light,
-            },
-          ]}>
-          Money: {money}
-        </Text>
-        <Text
-          style={[
-            styles.moneyDisplayText,
-            {
-              color: isDarkMode ? colors.text.dark : colors.text.light,
-            },
-          ]}>
-          Money/s: {0 /* TODO: Calculate money per second*/}
-        </Text>
-      </View>
+      <MoneyDisplay
+        money={money}
+        isDarkMode={isDarkMode}
+        navigation={navigation}
+      />
       <Button
         color={isDarkMode ? colors.active.dark : colors.active.light}
         title="Click to generate money"

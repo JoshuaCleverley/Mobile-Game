@@ -4,9 +4,12 @@ import { styles } from '../../Style/Styles'
 import { ScreenProps } from '../../Types/ScreenProps'
 import { useContext } from 'react'
 import { DarkModeContext } from '../../Contexts/DarkModeContext'
+import { MoneyDisplay } from '../../Components/MoneyDisplay'
+import { GameContext } from '../../Contexts/GameContext'
 
 export default function UpgradesScreen({ navigation, route }: ScreenProps) {
   const { isDarkMode } = useContext(DarkModeContext)
+  const { money, upgrades, setMoney, setUpgrades } = useContext(GameContext)
 
   return (
     <View
@@ -17,6 +20,12 @@ export default function UpgradesScreen({ navigation, route }: ScreenProps) {
             ? colors.background.dark
             : colors.background.light,
         },
-      ]}></View>
+      ]}>
+      <MoneyDisplay
+        money={money}
+        isDarkMode={isDarkMode}
+        navigation={navigation}
+      />
+    </View>
   )
 }
