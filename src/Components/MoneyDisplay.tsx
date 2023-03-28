@@ -20,6 +20,7 @@ export function MoneyDisplay({
   return (
     <View style={[styles.moneyDisplay]}>
       <View style={[styles.menu]}>
+        {/* Navigation menu */}
         <Button
           title={route.name == 'Upgrades' ? 'Back' : 'Upgrades'}
           color={isDarkMode ? colors.active.dark : colors.active.light}
@@ -39,6 +40,7 @@ export function MoneyDisplay({
           }}
         />
       </View>
+      {/* Money display */}
       <Text
         style={[
           styles.moneyDisplayText,
@@ -48,6 +50,7 @@ export function MoneyDisplay({
         ]}>
         Money: {formatCurrency(money)}
       </Text>
+      {/* Income display */}
       <Text
         style={[
           styles.moneyDisplayText,

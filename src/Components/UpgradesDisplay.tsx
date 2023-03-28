@@ -17,6 +17,7 @@ export function UpgradesDisplay({ upgrade, isDarkMode }: Props) {
   let { money, upgrades, setMoney, setUpgrades } = useContext(GameContext)
 
   const Buy = () => {
+    // Buy an upgrade
     const cost = upgrade.price
 
     if (cost <= money) {
@@ -28,8 +29,10 @@ export function UpgradesDisplay({ upgrade, isDarkMode }: Props) {
     }
   }
 
+  // Display upgrade info and allow user to buy it
   return (
     <View style={[styles.upgradeDisplay]}>
+      {/* Upgrade name */}
       <Text
         style={[
           styles.upgradeText,
@@ -40,6 +43,7 @@ export function UpgradesDisplay({ upgrade, isDarkMode }: Props) {
         {upgrade.name}
         {upgrade.owned ? ' (Owned)' : ''}
       </Text>
+      {/* Show buy button and cost if they are not bought */}
       <Text
         style={[
           styles.upgradeText,

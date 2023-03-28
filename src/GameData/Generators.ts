@@ -1,3 +1,4 @@
+// Generator type definition
 export type Generator = {
   id: number // Generator ID
   name: string // Generator name

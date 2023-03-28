@@ -1,6 +1,7 @@
+// AscensionUpgrade type definition
 export type AscensionUpgrade = {
   name: string // Name of upgrade
-  price: 100 // Price to buy upgrade
+  price: number // Price to buy upgrade
   bought: false // Is the upgrade bought yet
 }
 

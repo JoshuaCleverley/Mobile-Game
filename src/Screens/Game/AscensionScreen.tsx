@@ -58,6 +58,7 @@ export default function AscensionScreen({ navigation, route }: ScreenProps) {
         },
       ]}>
       <View>
+        {/* Ascension currency display */}
         <Text
           style={[
             styles.upgradeText,
@@ -67,6 +68,7 @@ export default function AscensionScreen({ navigation, route }: ScreenProps) {
           ]}>
           Ascension Currency: {formatNumber(ascensionCurrency)}
         </Text>
+        {/* Ascend button */}
         <Button
           title="Ascend"
           onPress={Ascend}

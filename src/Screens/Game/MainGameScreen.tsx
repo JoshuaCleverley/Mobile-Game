@@ -14,6 +14,7 @@ export default function MainGameScreen({ navigation, route }: ScreenProps) {
     useContext(GameContext)
 
   const clickMoneyButton = () => {
+    // Calculate how much money is produced on click and add it to money
     let clickMoney = 10
 
     upgrades.forEach(upgrade => {
@@ -41,6 +42,7 @@ export default function MainGameScreen({ navigation, route }: ScreenProps) {
         isDarkMode={isDarkMode}
         navigation={navigation}
       />
+      {/* Button to generate money */}
       <Button
         color={isDarkMode ? colors.active.dark : colors.active.light}
         title="Click to generate money"

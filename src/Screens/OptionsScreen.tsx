@@ -20,6 +20,7 @@ export default function OptionsScreen({ navigation, route }: ScreenProps) {
             : colors.background.light,
         },
       ]}>
+      {/* Text for switch */}
       <Text
         style={{ color: isDarkMode ? colors.text.dark : colors.text.light }}>
         Light/Dark mode

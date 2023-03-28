@@ -1,4 +1,5 @@
 export function formatCurrency(value: number) {
+  // Format number as a currency with two decimal places
   if (value != undefined && value != null)
     return value.toLocaleString('en-GB', {
       style: 'currency',

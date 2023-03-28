@@ -1,3 +1,4 @@
+// Upgrade type definition
 export type Upgrade = {
   id: number // Unique ID of upgrade
   name: string // Name of upgrade
@@ -9,7 +10,7 @@ export type Upgrade = {
   owned: boolean // Is the upgrade bought or not
 }
 
-// List of upgrades (they modify the amount of money made by clicking or from generators)
+// List of upgrades (modifies the amount of money made by clicking or from generators)
 export const upgrades: Upgrade[] = [
   {
     id: 0,

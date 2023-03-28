@@ -17,8 +17,12 @@ export function GeneratorDisplay({ generator, isDarkMode }: Props) {
   let { money, generators, setMoney, setGenerators } = useContext(GameContext)
 
   const Buy = (value?: number) => {
+    // Buy a specific number of generators, or as many as possible
+
+    // TODO: Calculate cost properly, using number of generators to scale it
     if (value) {
-      const cost = generator.price * value // TODO: Calculate cost properly
+      // Buy a specific number of generators
+      const cost = generator.price * value
 
       if (cost <= money) {
         let gens = generators
@@ -28,8 +32,9 @@ export function GeneratorDisplay({ generator, isDarkMode }: Props) {
         forceUpdate()
       }
     } else {
-      // Buy as many as possible
-      const cost = generator.price // TODO: Calculate cost properly
+      // Buy as many generators as possible
+      const cost = generator.price
+
       const max = Math.floor(money / cost)
       const gens = generators
       gens[generator.id].count += max
@@ -41,6 +46,7 @@ export function GeneratorDisplay({ generator, isDarkMode }: Props) {
 
   return (
     <View style={[styles.generatorDisplay]}>
+      {/* Display generator name and generator count */}
       <Text
         style={[
           styles.generatorText,
@@ -50,6 +56,7 @@ export function GeneratorDisplay({ generator, isDarkMode }: Props) {
         ]}>
         {generator.name} x{generator.count}
       </Text>
+      {/* Display generator cost */}
       <Text
         style={[
           styles.generatorText,
@@ -59,6 +66,7 @@ export function GeneratorDisplay({ generator, isDarkMode }: Props) {
         ]}>
         Cost: {formatCurrency(generator.price)}
       </Text>
+      {/* Display generator production rate */}
       <Text
         style={[
           styles.generatorText,
@@ -68,6 +76,7 @@ export function GeneratorDisplay({ generator, isDarkMode }: Props) {
         ]}>
         Produces {formatCurrency(generator.generates)} money/s
       </Text>
+      {/* Buttons to buy generator */}
       <View style={[styles.generatorButtonContainer]}>
         <Text
           style={[

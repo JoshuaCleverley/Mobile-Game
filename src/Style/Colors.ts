@@ -12,5 +12,5 @@ export const colors = {
     dark: '#2015eb',
     light: '#B38E10',
   },
-  // NOTE: inactive colour removed as disabled button colour is already a good colour by default
+  // NOTE: inactive colour removed as disabled button colour is already close by default
 }

@@ -99,6 +99,7 @@ function App(): JSX.Element {
   */
 
   useEffect(() => {
+    // Add income to money twice a second
     const delay = 500
     const interval = setInterval(() => {
       const income = calculateIncome() * (delay / 1000)
