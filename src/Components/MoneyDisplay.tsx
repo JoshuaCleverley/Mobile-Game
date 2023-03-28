@@ -2,14 +2,17 @@ import { Button, Text, View } from 'react-native'
 import { styles } from '../Style/Styles'
 import { colors } from '../Style/Colors'
 import { useRoute } from '@react-navigation/native'
+import { formatCurrency } from '../Utils/Formatting'
 
 export function MoneyDisplay({
   isDarkMode,
   money,
+  income,
   navigation,
 }: {
   isDarkMode: boolean
   money: number
+  income: number
   navigation: any
 }) {
   const route = useRoute()
@@ -22,6 +25,7 @@ export function MoneyDisplay({
           color={isDarkMode ? colors.active.dark : colors.active.light}
           onPress={_ => {
             const location = route.name == 'Upgrades' ? 'Game' : 'Upgrades'
+            if (location == 'Game') navigation.pop()
             navigation.push(location)
           }}
         />
@@ -30,6 +34,7 @@ export function MoneyDisplay({
           color={isDarkMode ? colors.active.dark : colors.active.light}
           onPress={_ => {
             const location = route.name == 'Ascension' ? 'Game' : 'Ascension'
+            if (location == 'Game') navigation.pop()
             navigation.push(location)
           }}
         />
@@ -41,7 +46,7 @@ export function MoneyDisplay({
             color: isDarkMode ? colors.text.dark : colors.text.light,
           },
         ]}>
-        Money: {money}
+        Money: {formatCurrency(money)}
       </Text>
       <Text
         style={[
@@ -50,7 +55,7 @@ export function MoneyDisplay({
             color: isDarkMode ? colors.text.dark : colors.text.light,
           },
         ]}>
-        Money/s: {0 /* TODO: Calculate money per second*/}
+        Money/s: {formatCurrency(income)}
       </Text>
     </View>
   )

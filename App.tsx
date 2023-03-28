@@ -21,8 +21,8 @@ import { DarkModeContext } from './src/Contexts/DarkModeContext'
 import { GameContext } from './src/Contexts/GameContext'
 
 // Game data
-import { generators } from './src/GameData/Generators'
-import { upgrades } from './src/GameData/Upgrades'
+import { Generator, generators } from './src/GameData/Generators'
+import { Upgrade, upgrades } from './src/GameData/Upgrades'
 import { ascensionUpgrades } from './src/GameData/AscensionUpgrades'
 import { GameDataStored } from './src/Types/GameDataStored'
 
@@ -36,8 +36,12 @@ function App(): JSX.Element {
   // Game data state stored here and passed down to other components
   const [money, setMoney] = useState(0)
   const [ascensionCurrency, setAscensionCurrency] = useState(0)
-  const [generatorsValue, setGenerators] = useState(generators)
-  const [upgradesValue, setUpgrades] = useState(upgrades)
+  const [generatorsValue, setGenerators] = useState(
+    JSON.parse(JSON.stringify(generators)) as Generator[]
+  )
+  const [upgradesValue, setUpgrades] = useState(
+    JSON.parse(JSON.stringify(upgrades)) as Upgrade[]
+  )
   const [ascensionUpgradesValue, setAscensionUpgrades] =
     useState(ascensionUpgrades)
 
@@ -94,6 +98,41 @@ function App(): JSX.Element {
   }, [])
   */
 
+  useEffect(() => {
+    const delay = 500
+    const interval = setInterval(() => {
+      const income = calculateIncome() * (delay / 1000)
+      setMoney(money => money + income)
+    }, delay)
+
+    return () => clearInterval(interval)
+  }, [upgradesValue, generatorsValue])
+
+  const calculateIncome = (): number => {
+    // Calculate income based on generators
+    let income = 0
+
+    generatorsValue.forEach((generator, index) => {
+      let generatorIncome = generator.count * generator.generates
+      income += generatorIncome
+      upgradesValue.forEach(upgrade => {
+        if (upgrade.owned) {
+          if (!upgrade.click) {
+            if (
+              upgrade.generators.includes(index) ||
+              upgrade.generators.length == 0
+            ) {
+              generatorIncome *= upgrade.moneyMultiplier
+            }
+          }
+        }
+      })
+      income += generatorIncome
+    })
+
+    return income
+  }
+
   return (
     <DarkModeContext.Provider value={{ isDarkMode, setIsDarkMode }}>
       {/* Providers for darkmode and game data */}
@@ -109,6 +148,7 @@ function App(): JSX.Element {
           setGenerators,
           setUpgrades,
           setAscensionUpgrades,
+          calculateIncome,
         }}>
         <NavigationContainer>
           {/* Style statusbar with the background colour */}

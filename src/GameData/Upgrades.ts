@@ -1,5 +1,7 @@
 export type Upgrade = {
+  id: number // Unique ID of upgrade
   name: string // Name of upgrade
+  description: string // Description of upgrade
   price: number // Price to buy upgrade
   moneyMultiplier: number // Number to multiply click or money/s of generator by
   generators: number[] // Which generators are affected by this multiplier. If empty affects all unless click is set to true
@@ -10,16 +12,20 @@ export type Upgrade = {
 // List of upgrades (they modify the amount of money made by clicking or from generators)
 export const upgrades: Upgrade[] = [
   {
+    id: 0,
     name: 'Upgrade One',
+    description: '100% boost to clicks',
     price: 100,
-    moneyMultiplier: 1.1,
+    moneyMultiplier: 2,
     generators: [],
-    click: false,
+    click: true,
     owned: false,
   },
   {
-    name: '',
-    price: 100,
+    id: 1,
+    name: 'Upgrade Two',
+    description: '20% boost to all generators',
+    price: 1000,
     moneyMultiplier: 1.2,
     generators: [],
     click: false,

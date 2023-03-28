@@ -42,4 +42,28 @@ export const styles = StyleSheet.create({
   moneyDisplayText: {
     fontSize: 30,
   },
+  generatorDisplay: {
+    marginVertical: 10,
+    width: '100%',
+  },
+  generatorText: {
+    fontSize: 20,
+  },
+  generatorButtonContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    fontSize: 20,
+    gap: 5,
+  },
+  listContainer: {
+    width: '95%',
+    display: 'flex',
+  },
+  upgradeDisplay: {
+    marginVertical: 10,
+    width: '100%',
+  },
+  upgradeText: {
+    fontSize: 20,
+  },
 })

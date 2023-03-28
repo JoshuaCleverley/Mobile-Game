@@ -19,4 +19,7 @@ export const GameContext = React.createContext({
   setGenerators: (value: Generator[]) => {},
   setUpgrades: (value: Upgrade[]) => {},
   setAscensionUpgrades: (value: AscensionUpgrade[]) => {},
+  calculateIncome: (): number => {
+    return 0
+  },
 })

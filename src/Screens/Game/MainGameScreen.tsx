@@ -6,18 +6,23 @@ import { useContext } from 'react'
 import { DarkModeContext } from '../../Contexts/DarkModeContext'
 import { GameContext } from '../../Contexts/GameContext'
 import { MoneyDisplay } from '../../Components/MoneyDisplay'
+import { GeneratorDisplay } from '../../Components/GeneratorDisplay'
 
 export default function MainGameScreen({ navigation, route }: ScreenProps) {
   const { isDarkMode } = useContext(DarkModeContext)
-  const { money, generators, setMoney, setGenerators } = useContext(GameContext)
+  const { money, generators, upgrades, setMoney, calculateIncome } =
+    useContext(GameContext)
 
   const clickMoneyButton = () => {
-    let newMoney = money
+    let clickMoney = 10
 
-    // TODO: Calculate how much money should be generated based on upgrades
-    newMoney += 1
+    upgrades.forEach(upgrade => {
+      if (upgrade.owned && upgrade.click) {
+        clickMoney *= upgrade.moneyMultiplier
+      }
+    })
 
-    setMoney(newMoney)
+    setMoney(money + clickMoney)
   }
 
   return (
@@ -32,6 +37,7 @@ export default function MainGameScreen({ navigation, route }: ScreenProps) {
       ]}>
       <MoneyDisplay
         money={money}
+        income={calculateIncome()}
         isDarkMode={isDarkMode}
         navigation={navigation}
       />
@@ -40,10 +46,16 @@ export default function MainGameScreen({ navigation, route }: ScreenProps) {
         title="Click to generate money"
         onPress={clickMoneyButton}
       />
-      <ScrollView>
+      <ScrollView contentContainerStyle={styles.listContainer}>
         {/* Display generators */}
         {generators.map(generator => {
-          return <Text key={generator.name}>{generator.name}</Text>
+          return (
+            <GeneratorDisplay
+              key={generator.name}
+              isDarkMode={isDarkMode}
+              generator={generator}
+            />
+          )
         })}
       </ScrollView>
     </View>
