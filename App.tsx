@@ -67,10 +67,8 @@ function App(): JSX.Element {
         console.error('Error loading game data:\n' + e)
       })
   }, [])
-  */
 
   // Save game every 20 seconds
-  /*
   useEffect(() => {
     const interval = setInterval(() => {
       console.log('Saving game')
@@ -115,17 +113,13 @@ function App(): JSX.Element {
 
     generatorsValue.forEach((generator, index) => {
       let generatorIncome = generator.count * generator.generates
-      income += generatorIncome
       upgradesValue.forEach(upgrade => {
-        if (upgrade.owned) {
-          if (!upgrade.click) {
-            if (
-              upgrade.generators.includes(index) ||
-              upgrade.generators.length == 0
-            ) {
-              generatorIncome *= upgrade.moneyMultiplier
-            }
-          }
+        if (
+          upgrade.owned &&
+          !upgrade.click &&
+          (upgrade.generators.includes(index) || upgrade.generators.length == 0)
+        ) {
+          generatorIncome *= upgrade.moneyMultiplier
         }
       })
       income += generatorIncome

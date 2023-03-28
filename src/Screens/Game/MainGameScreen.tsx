@@ -15,7 +15,7 @@ export default function MainGameScreen({ navigation, route }: ScreenProps) {
 
   const clickMoneyButton = () => {
     // Calculate how much money is produced on click and add it to money
-    let clickMoney = 10
+    let clickMoney = 0.01 // Base click money
 
     upgrades.forEach(upgrade => {
       if (upgrade.owned && upgrade.click) {

@@ -15,8 +15,8 @@ export const upgrades: Upgrade[] = [
   {
     id: 0,
     name: 'Upgrade One',
-    description: '100% boost to clicks',
-    price: 100,
+    description: 'Double value from clicking',
+    price: 1,
     moneyMultiplier: 2,
     generators: [],
     click: true,
@@ -25,6 +25,16 @@ export const upgrades: Upgrade[] = [
   {
     id: 1,
     name: 'Upgrade Two',
+    description: 'Triple value from clicking',
+    price: 3,
+    moneyMultiplier: 3,
+    generators: [],
+    click: true,
+    owned: false,
+  },
+  {
+    id: 2,
+    name: 'Upgrade Three',
     description: '20% boost to all generators',
     price: 1000,
     moneyMultiplier: 1.2,
