@@ -17,7 +17,6 @@ export default function AscensionScreen({ navigation, route }: ScreenProps) {
     ascensionCurrency,
     ascensionUpgrades,
     setAscensionCurrency,
-    setAscensionUpgrades,
     setGenerators,
     setMoney,
     setUpgrades,
