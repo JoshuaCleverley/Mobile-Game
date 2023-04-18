@@ -122,6 +122,17 @@ function App(): JSX.Element {
           generatorIncome *= upgrade.moneyMultiplier
         }
       })
+
+      ascensionUpgradesValue.forEach(ascensionUpgrade => {
+        if (
+          ascensionUpgrade.owned &&
+          !ascensionUpgrade.click &&
+          (ascensionUpgrade.generators.includes(index) ||
+            ascensionUpgrade.generators.length == 0)
+        ) {
+          generatorIncome *= ascensionUpgrade.moneyMultiplier
+        }
+      })
       income += generatorIncome
     })
 

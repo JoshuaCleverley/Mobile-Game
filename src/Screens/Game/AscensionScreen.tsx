@@ -8,6 +8,7 @@ import { GameContext } from '../../Contexts/GameContext'
 import { generators as gens } from '../../GameData/Generators'
 import { upgrades } from '../../GameData/Upgrades'
 import { formatNumber } from '../../Utils/Formatting'
+import { AscensionUpgradesDisplay } from '../../Components/AscensionUpgradesDisplay'
 
 export default function AscensionScreen({ navigation, route }: ScreenProps) {
   const { isDarkMode } = useContext(DarkModeContext)
@@ -75,7 +76,18 @@ export default function AscensionScreen({ navigation, route }: ScreenProps) {
           color={isDarkMode ? colors.active.dark : colors.active.light}
         />
       </View>
-      <ScrollView>{/* Display upgrades */}</ScrollView>
+      <ScrollView>
+        {/* Display upgrades */}
+        {ascensionUpgrades.map(ascensionUpgrade => {
+          return (
+            <AscensionUpgradesDisplay
+              key={ascensionUpgrade.id}
+              isDarkMode={isDarkMode}
+              ascensionUpgrade={ascensionUpgrade}
+            />
+          )
+        })}
+      </ScrollView>
     </View>
   )
 }
