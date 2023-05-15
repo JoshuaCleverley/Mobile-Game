@@ -1,4 +1,4 @@
-import { Button, ScrollView, Text, View } from 'react-native'
+import { Alert, Button, ScrollView, Text, View } from 'react-native'
 import { colors } from '../../Style/Colors'
 import { styles } from '../../Style/Styles'
 import { ScreenProps } from '../../Types/ScreenProps'
@@ -35,16 +35,32 @@ export default function AscensionScreen({ navigation, route }: ScreenProps) {
         (generators[i].count * generators[i].price) / 1000
     }
 
-    setAscensionCurrency(ascensionCurrency + ascensionCurrencyGained)
+    Alert.alert(
+      'Confirm ascension',
+      `Please confirm you want to ascend\nYou will lose all progress and gain ascension currency\nYou will gain ${ascensionCurrencyGained} ascension currency`,
+      [
+        {
+          text: 'Cancel',
+          onPress: () => console.log('Cancel Pressed'),
+          style: 'cancel',
+        },
+        {
+          text: 'Confirm',
+          onPress: () => {
+            setAscensionCurrency(ascensionCurrency + ascensionCurrencyGained)
 
-    // Reset everything except ascension points and upgrades
-    setGenerators([...gens])
-    setMoney(0)
-    setUpgrades([...upgrades])
+            // Reset everything except ascension points and upgrades
+            setGenerators([...gens])
+            setMoney(0)
+            setUpgrades([...upgrades])
 
-    // Send user back to main game page
-    navigation.pop()
-    navigation.push('Game')
+            // Send user back to main game page
+            navigation.pop()
+            navigation.push('Game')
+          },
+        },
+      ]
+    )
   }
 
   return (

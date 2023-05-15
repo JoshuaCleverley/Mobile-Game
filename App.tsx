@@ -46,10 +46,10 @@ function App(): JSX.Element {
     useState(ascensionUpgrades)
 
   // TODO: Get saving working
-  /*
+
   useEffect(() => {
     // On startup, check if data is saved already and load it if it is
-    AsyncStorage.getItem('gameData')
+    AsyncStorage.getItem('@gameData')
       .then(res => {
         if (res) {
           const gameData = JSON.parse(res) as GameDataStored
@@ -83,7 +83,7 @@ function App(): JSX.Element {
 
       const gameDataStringified = JSON.stringify(gameData)
 
-      AsyncStorage.setItem('gameData', gameDataStringified)
+      AsyncStorage.setItem('@gameData', gameDataStringified)
         .then(res => {
           console.log('Successfully stored game data')
         })
@@ -93,12 +93,17 @@ function App(): JSX.Element {
     }, 20000)
 
     return () => clearInterval(interval)
-  }, [])
-  */
+  }, [
+    ascensionCurrency,
+    generatorsValue,
+    upgradesValue,
+    ascensionUpgradesValue,
+  ])
 
   useEffect(() => {
     // Add income to money twice a second
     const delay = 500
+
     const interval = setInterval(() => {
       const income = calculateIncome() * (delay / 1000)
       setMoney(money => money + income)
@@ -136,7 +141,7 @@ function App(): JSX.Element {
       income += generatorIncome
     })
 
-    return income
+    return income + income * (ascensionCurrency / 100)
   }
 
   return (

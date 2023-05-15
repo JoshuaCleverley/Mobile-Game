@@ -1,14 +1,51 @@
 import { useContext, useState } from 'react'
-import { Switch, Text, View } from 'react-native'
+import { Alert, Button, Switch, Text, View } from 'react-native'
 import { colors } from '../Style/Colors'
 import { styles } from '../Style/Styles'
 import { ScreenProps } from '../Types/ScreenProps'
 
 import { DarkModeContext } from '../Contexts/DarkModeContext'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { GameContext } from '../Contexts/GameContext'
+import { ascensionUpgrades } from '../GameData/AscensionUpgrades'
+import { upgrades } from '../GameData/Upgrades'
+import { generators } from '../GameData/Generators'
 
 export default function OptionsScreen({ navigation, route }: ScreenProps) {
   const { isDarkMode, setIsDarkMode } = useContext(DarkModeContext)
+  const {
+    setMoney,
+    setUpgrades,
+    setGenerators,
+    setAscensionCurrency,
+    setAscensionUpgrades,
+  } = useContext(GameContext)
+
   const toggleSwitch = () => setIsDarkMode(!isDarkMode)
+
+  const clearData = () => {
+    Alert.alert(
+      'Confirm delete',
+      'Please confirm you want to delete your saved data',
+      [
+        {
+          text: 'Cancel',
+          onPress: () => console.log('Cancel Pressed'),
+          style: 'cancel',
+        },
+        {
+          text: 'Confirm',
+          onPress: () => AsyncStorage.removeItem('@gameData'),
+        },
+      ]
+    )
+
+    setMoney(0)
+    setAscensionCurrency(0)
+    setGenerators([...generators])
+    setUpgrades([...upgrades])
+    setAscensionUpgrades([...ascensionUpgrades])
+  }
 
   return (
     <View
@@ -32,6 +69,8 @@ export default function OptionsScreen({ navigation, route }: ScreenProps) {
         onValueChange={toggleSwitch}
         value={isDarkMode}
       />
+      {/* Button to clear saved data */}
+      <Button title="Clear saved data" onPress={clearData} />
     </View>
   )
 }

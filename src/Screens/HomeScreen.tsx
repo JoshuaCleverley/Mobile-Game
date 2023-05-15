@@ -27,7 +27,7 @@ export default function HomeScreen({ navigation, route }: ScreenProps) {
             color: isDarkMode ? colors.text.dark : colors.text.light,
           },
         ]}>
-        Game Title
+        Money Game
       </Text>
 
       {/* Container for buttons */}
