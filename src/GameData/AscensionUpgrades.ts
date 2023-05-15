@@ -23,16 +23,6 @@ export const ascensionUpgrades: AscensionUpgrade[] = [
     owned: false,
   },
   {
-    id: 0,
-    name: 'Upgrade Clicks II',
-    description: '100x production from clicking',
-    price: 1000,
-    moneyMultiplier: 100,
-    generators: [],
-    click: true,
-    owned: false,
-  },
-  {
     id: 1,
     name: 'Upgrade Ice Cream',
     description: '100x production from Ice Cream Stand',

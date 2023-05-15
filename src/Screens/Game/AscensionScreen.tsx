@@ -25,8 +25,6 @@ export default function AscensionScreen({ navigation, route }: ScreenProps) {
   const Ascend = () => {
     // Calculate ascension points to be gained based on cost of all generators purchased
     // This will be used to unlock ascension upgrades
-    // NOTE: This is temporary, will be changed to a more complex formula later based on
-    //       data such as total money gained, total income, etc.
     // The current formula is: (total cost of all generators) / 1000
     let ascensionCurrencyGained = 0
 

@@ -28,18 +28,7 @@ export default function InstructionsScreen({ navigation, route }: ScreenProps) {
               color: isDarkMode ? colors.text.dark : colors.text.light,
             },
           ]}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at
-          tellus porttitor, fringilla lacus congue, maximus augue. Vestibulum
-          maximus, mauris nec euismod porttitor, nisi erat lobortis orci, id
-          euismod elit turpis mattis metus. Nam nibh ipsum, pulvinar nec dolor
-          et, malesuada laoreet erat. Aenean nec lectus quis risus rhoncus
-          mattis. Proin blandit fermentum elit at porttitor. Nunc dolor justo,
-          dapibus vel est at, pretium cursus enim. Curabitur et lacus vitae elit
-          dapibus lacinia quis ut ex. Phasellus non bibendum velit. Proin
-          vehicula eros nec elit tincidunt ultricies. Sed vestibulum sed dolor
-          et suscipit. In dignissim enim eu risus tristique convallis.
-          Vestibulum cursus sem eu mi rutrum fermentum. Cras eros ex, imperdiet
-          pretium eros porta, posuere laoreet magna.
+          Press Play to start playing!
         </Text>
         <Text
           style={[
@@ -48,14 +37,10 @@ export default function InstructionsScreen({ navigation, route }: ScreenProps) {
               color: isDarkMode ? colors.text.dark : colors.text.light,
             },
           ]}>
-          Proin tincidunt maximus felis at egestas. Ut tempor nec tortor vitae
-          viverra. Mauris aliquet felis ligula, ac auctor urna pharetra id.
-          Pellentesque eu pellentesque elit. Proin purus augue, pretium vitae
-          quam sed, condimentum lobortis sem. Curabitur ut pulvinar lectus,
-          aliquam vulputate mauris. Ut et vehicula orci, sed ullamcorper leo.
-          Aenean sapien felis, viverra sed eros dignissim, feugiat vulputate
-          urna. Etiam nec dui nibh. Praesent tincidunt ex lorem, quis convallis
-          risus faucibus eget.
+          You can click the button to generate money. This money can be used to
+          buy "Generators" and "Upgrades". Generators generate money
+          automatically, and Upgrades increase the amount of money you get per
+          click or how much money generators produce.
         </Text>
         <Text
           style={[
@@ -64,18 +49,10 @@ export default function InstructionsScreen({ navigation, route }: ScreenProps) {
               color: isDarkMode ? colors.text.dark : colors.text.light,
             },
           ]}>
-          Ut suscipit varius sapien vel sollicitudin. Phasellus fringilla magna
-          sed nibh convallis tempus. Vivamus ultrices quis urna id hendrerit.
-          Praesent sit amet ullamcorper arcu. Vivamus pretium purus ac diam
-          porta consectetur. Fusce in commodo lorem, eu luctus libero. Nunc nec
-          semper lorem, et cursus tortor. Vestibulum ante ipsum primis in
-          faucibus orci luctus et ultrices posuere cubilia curae; Integer
-          vestibulum, nisl non ultrices finibus, velit lorem consequat dolor, ut
-          varius turpis justo id felis. In aliquam justo pulvinar ullamcorper
-          dignissim. Curabitur ullamcorper, diam tempor scelerisque pharetra,
-          metus justo pellentesque eros, eget sollicitudin nisl sem non nulla.
-          In non pharetra tellus. Integer lacinia sem augue, mollis tincidunt
-          ipsum mollis sed.
+          Once you have bought a lot of generators, check out "Ascension".
+          Ascension resets your game, but you get a multiplier to your money
+          made. Ascension currency can also be used to buy "Ascension Upgrades"
+          which are permanent upgrades that make the game easier.
         </Text>
         <Text
           style={[
@@ -84,38 +61,7 @@ export default function InstructionsScreen({ navigation, route }: ScreenProps) {
               color: isDarkMode ? colors.text.dark : colors.text.light,
             },
           ]}>
-          Ut suscipit varius sapien vel sollicitudin. Phasellus fringilla magna
-          sed nibh convallis tempus. Vivamus ultrices quis urna id hendrerit.
-          Praesent sit amet ullamcorper arcu. Vivamus pretium purus ac diam
-          porta consectetur. Fusce in commodo lorem, eu luctus libero. Nunc nec
-          semper lorem, et cursus tortor. Vestibulum ante ipsum primis in
-          faucibus orci luctus et ultrices posuere cubilia curae; Integer
-          vestibulum, nisl non ultrices finibus, velit lorem consequat dolor, ut
-          varius turpis justo id felis. In aliquam justo pulvinar ullamcorper
-          dignissim. Curabitur ullamcorper, diam tempor scelerisque pharetra,
-          metus justo pellentesque eros, eget sollicitudin nisl sem non nulla.
-          In non pharetra tellus. Integer lacinia sem augue, mollis tincidunt
-          ipsum mollis sed.
-        </Text>
-        <Text
-          style={[
-            styles.instructionsBody,
-            {
-              color: isDarkMode ? colors.text.dark : colors.text.light,
-            },
-          ]}>
-          Ut suscipit varius sapien vel sollicitudin. Phasellus fringilla magna
-          sed nibh convallis tempus. Vivamus ultrices quis urna id hendrerit.
-          Praesent sit amet ullamcorper arcu. Vivamus pretium purus ac diam
-          porta consectetur. Fusce in commodo lorem, eu luctus libero. Nunc nec
-          semper lorem, et cursus tortor. Vestibulum ante ipsum primis in
-          faucibus orci luctus et ultrices posuere cubilia curae; Integer
-          vestibulum, nisl non ultrices finibus, velit lorem consequat dolor, ut
-          varius turpis justo id felis. In aliquam justo pulvinar ullamcorper
-          dignissim. Curabitur ullamcorper, diam tempor scelerisque pharetra,
-          metus justo pellentesque eros, eget sollicitudin nisl sem non nulla.
-          In non pharetra tellus. Integer lacinia sem augue, mollis tincidunt
-          ipsum mollis sed.
+          The goal of the game is to generate as much money as you can!
         </Text>
       </ScrollView>
     </SafeAreaView>
